@@ -1,0 +1,35 @@
+program: train.py
+method: bayes
+metric:
+  name: val_acc
+  goal: maximize
+parameters:
+  # Architecture
+  filter_organization:
+    values: ["same", "double", "half"]
+  base_filters:
+    values: [16, 32, 64]
+  activation:
+    values: ["relu", "gelu", "silu", "mish"]
+  
+  # Regularization
+  batch_norm:
+    values: [True, False]
+  dropout_rate:
+    values: [0.0, 0.2, 0.3]
+  dropout_location:
+    values: ["conv", "dense", "both"]
+  
+  # Data
+  data_augmentation:
+    values: [True, False]
+  batch_size:
+    values: [32, 64]
+  
+  # Optimization
+  learning_rate:
+    min: 1e-4
+    max: 1e-3
+    distribution: log_uniform
+  optimizer:
+    values: ["adam", "nadam", "rmsprop"]
