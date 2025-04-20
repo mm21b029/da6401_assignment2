@@ -32,17 +32,17 @@ def get_transforms(train=False, data_augmentation=False):
 
 def prepare_datasets(data_augmentation=False):
     train_dataset = datasets.ImageFolder(
-        root='../input/inaturalist/inaturalist_12K/train',
+        root='./inaturalist_12K/train',
         transform=get_transforms(train=True, data_augmentation=data_augmentation)
     )
     
     val_dataset = datasets.ImageFolder(
-        root='../input/inaturalist/inaturalist_12K/train',
+        root='./inaturalist_12K/train',
         transform=get_transforms(train=False)
     )
     
     test_dataset = datasets.ImageFolder(
-        root='../input/inaturalist/inaturalist_12K/val',
+        root='./inaturalist_12K/test',
         transform=get_transforms(train=False)
     )
 
